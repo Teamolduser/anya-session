@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queen Anya</title>
+    <style>
+        body {
+            background-image: url(''); /* Replace with your anime background URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+      min-height: 100vh; /* Set minimum height for viewport */
+      justify-content: center; /* Center entire content vertically */
+      align-items: center; /* Center buttons horizontally */
+        }
+
+        .button-container {
+      display: flex;
+      flex-direction: column; /* Stack buttons vertically */
+    }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0); /* Initial box-shadow, no glow */
+            text-align: center; /* Center text inside buttons */
+            font-weight: 600; /* Make text slightly bold */
+            opacity: 0; /* Initially set opacity to 0 */
+            transform: translateY(20px); /* Initially move the buttons down */
+            animation: buttonAnimation 1s ease forwards; /* Slower animation, 1s duration */
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.7); /* Add the blue glow on hover */
+        }
+
+        /* Define the animation for the buttons */
+        @keyframes buttonAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Add this style for the Deploy buttons */
+#deployPopup .button {
+    width: 100%; /* Make the Deploy buttons span the full width of the popup */
+    margin: 10px 0; /* Add spacing between Deploy buttons */
+}
+
+
+
+        /* Popup Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0); /* Start with scale(0) for animation */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Add transform and opacity transition */
+            opacity: 0; /* Initially set opacity to 0 */
+            animation: popupAnimation 1s ease; /* Animation for the popup */
+        }
+
+        /* Style for buttons inside the popup */
+        .popup .button {
+            display: block; /* Change to block to center-align buttons */
+            margin: 10px auto; /* Center-align buttons horizontally */
+            text-align: center; /* Center-align text within buttons */
+            opacity: 0; /* Initially set opacity to 0 */
+            transform: translateY(20px); /* Initially move the buttons down */
+        }
+
+        /* Remove underline from all button texts */
+        .button, .button:hover {
+            text-decoration: none;
+        }
+
+        /* Make description text 30% faded */
+        .popup p {
+            opacity: 0.7;
+        }
+
+        /* Display the popup with a scale(1) when active */
+        .popup.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1; /* Change opacity to 1 when active */
+            animation: none; /* Disable the animation when active */
+        }
+
+        /* New animation class for reopening the popup */
+        .popup.reopen {
+            animation: popupAnimation 1s ease forwards;
+        }
+
+        /* Adjust pop-up style for mobile devices */
+        @media (max-width: 600px) {
+            .popup {
+                width: 90%; /* Adjust the width for mobile screens */
+                max-width: 300px; /* Set a maximum width for readability */
+                transform: translate(-50%, -50%) scale(0.7); /* Reduce the scale for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button class="button" onclick="window.location.href='./choose.html'" class="button">Session ID</button>
+        <button class="button" onclick="window.location.href='/fp'" class="button">Full Profile</button>
+        <button class="button" onclick="window.location.href='https://GitHub.com/Pikabotz/Anya_v2-MD'" style="color: white; text-decoration: none;">Repo</button>
+        <button class="button" id="deployButton">Deploy</button>
+                <button class="button" onclick="window.location.href='/sc'" class="button">Source Code Of this Web</button>
+</div>
+
+<!-- Deploy Popup -->
+<div class="popup" id="deployPopup">
+    <h2>Choose a Deployment Platform</h2>
+    <p>Select one of the deployment platforms below:</p>
+    <button class="button" onclick="window.location.href='/wrkprgrss'">Heroku</button>
+    <button class="button" onclick="window.location.href='/wrkprgrss'">Koyeb</button>
+    <button class="button" onclick="window.location.href='/wrkprgrss'">Replit</button>
+    <button class="button" onclick="window.location.href='/wrkprgrss'">Termux</button>
+    <button class="button" onclick="window.location.href='/wrkprgrss'">Others</button>
+</div>
+
+
+    <script>
+        // JavaScript to handle button clicks and popups
+        const deployButton = document.getElementById('deployButton');
+ // New deploy button
+        const deployPopup = document.getElementById('deployPopup'); // New deploy popup
+
+        
+        deployButton.addEventListener('click', () => {
+    deployPopup.style.display = 'block';
+    setTimeout(() => {
+        deployPopup.classList.add('active');
+        deployButton.style.transform = 'scale(0)';
+    }, 0);
+});
+
+function showGitHubInput() {
+        if (deployPopup.classList.contains('active')) {
+            deployPopup.classList.remove('active');
+            deployButton.style.transform = 'scale(1)';
+            deployPopup.classList.add('reopen');
+        }
+        githubRepoInput.value = ''; // Clear input field
+        githubPopup.style.display = 'block';
+        setTimeout(() => {
+            githubPopup.classList.add('active');
+            deployButton.style.transform = 'scale(0)';
+        }, 0);
+    }
+
+// Function to handle deployment from GitHub
+function deployFromGitHub() {
+    // Retrieve the GitHub repo link from the input field
+    const githubRepoLink = document.getElementById('githubRepoInput').value;
+
+    // Check if the input field is empty
+    if (!githubRepoLink) {
+        alert('Please enter a GitHub repository link before continuing.');
+        return; // Exit the function if the input is empty
+    }
+
+    // Check if the GitHub repo link contains "https://github.com/"
+    if (!githubRepoLink.includes('https://github.com/')) {
+        alert('Please enter a valid GitHub repository link.');
+        return; // Exit the function if the link is invalid
+    }
+
+    // Set the href attribute of the "Continue" button
+    const continueButton = document.getElementById('continueButton');
+    const deployLink = `https://heroku.com/deploy?template=${encodeURIComponent(githubRepoLink)}`;
+    continueButton.href = deployLink;
+
+    // Handle the deployment process with the GitHub repo link as needed
+    // You can add your deployment logic here
+
+    // Close the GitHub Repo Popup
+    githubPopup.classList.remove('active');
+    deployButton.style.transform = 'scale(1)';
+}
+
+
+        // Close popups when clicking outside
+        window.addEventListener('click', (event) => {
+    if (event.target === qrPopup || event.target === pairPopup || event.target === deployPopup) {
+        qrPopup.classList.remove('active');
+        pairPopup.classList.remove('active');
+        deployPopup.classList.remove('active'); // Close deploy popup
+        qrButton.style.transform = 'scale(1)';
+        pairButton.style.transform = 'scale(1)';
+        deployButton.style.transform = 'scale(1)'; // Reset button size for deploy
+        qrPopup.classList.remove('reopen');
+        pairPopup.classList.remove('reopen');
+    }
+});
+
+        // Close popups when clicking outside except for buttons and popups
+        document.addEventListener('click', (event) => {
+    if (deployPopup.classList.contains('active') && event.target !== deployPopup && event.target !== deployButton) {
+        deployPopup.classList.remove('active'); // Close deploy popup
+        deployButton.style.transform = 'scale(1)'; // Reset button size for deploy
+    }
+    if (event.target !== githubPopup && !githubPopup.contains(event.target) &&
+            event.target !== deployButton && event.target !== deployPopup) {
+            githubPopup.classList.remove('active');
+            deployButton.style.transform = 'scale(1)';
+        }
+});
+    </script>
+    
+<footer style="background-color: rgba(0, 0, 0, 0.7); color: #fff; text-align: center; position: fixed; bottom: 0; width: 100%;">
+    <div style="padding: 10px;">
+        <p>&copy; Pikabotz | 2023 - 2024 </p>
+    </div>
+</footer>
+
+
+</body>
+</html>
