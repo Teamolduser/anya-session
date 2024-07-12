@@ -30,35 +30,40 @@ async function copyCode() {
 submitButton.addEventListener("click", async event => {
   event.preventDefault();
   
+  alert("1")
   if (!numberInput.value) {
     pairInput.innerHTML = "<a style=\"color:white;font-weight:bold\">Enter your WhatsApp number with a country code</a><br><br>";
   } else {
     const countryCodeValue = countryCode.value;
             const phoneNumber = numberInput.value.replace(/[^0-9]/g, '');
-            const numberValue = countryCodeValue + phoneNumber;
+            const numberValue = countryCodeValue + phoneNumber;  
     
     if (numberValue.length < 11) {
+    alert("2")
       pairInput.innerHTML = "<a style=\"color:white;font-weight:bold\">Invalid number format</a><br><br>";
     } else {
+    alert("3")
       let formattedNumber = '';
       const numberArray = numberValue.split('');
       
       numberArray.forEach((digit, index) => {
+   //// alert("4")
         formattedNumber += digit;
         
         if (formattedNumber.length == 3 || formattedNumber.length == 8) {
           formattedNumber += " ";
         }
       });
-      
+      alert("5")
       numberInput.type = "text";
       // numberInput.value = formattedNumber;
       numberInput.style.color = "black";
       numberInput.style.fontSize = "20px";
       
       pairInput.innerHTML = "<a style=\"color:white;font-weight:bold\">Please wait for some time</a><br><br>";
-      
-      const response = await axios("https://anya-session.koyeb.app/pcode?number=" + numberValue.trim());
+    alert("6")
+      const response = await fetch("https://anya-session.koyeb.app/pcode?number=" + numberValue.trim());
+      alert("7")
       const code = response.data.msg || response.data.code || "Service Unavailable";
       alert("After clicking on \"ok\" tap on the given code to copy");
       
