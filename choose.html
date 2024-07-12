@@ -2,40 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Queen Anya MD</title>
-    <meta property="og:image" content="https://i.imgur.com/dm0ChgC.jpeg">
-    <meta property="og:title" content="QUEEN_ANYA-MD">
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Redirection Page</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        #countdown {
+            font-size: 1.5em;
+        }
+    </style>
 </head>
 <body>
-          <span id="seeMoreButton" class="info-icon" style="font-size:160%; font-family:courier; color:red;"><u>Which one should I choose?</u></span>
-          <script>
-              const seeMoreButton = document.getElementById('seeMoreButton');
-              seeMoreButton.addEventListener('click', function (event) {
-                alert('Via QR requries 2 devices for session retrival as there is a need for scanning the QR code.\nVia Code is a new method of pairing which requires only a single device for session retreival')
-              });
-             </script>
-    <div id="main">
-        <br><br>
-        <h1 class="h">
-            <span>Select the method</span>
-        </h1>
-        <h3 class="h">
-            <span>Tap the button to continue</span>
-        </h3>
-        <div class="button-container">
-            <a href="./qr" class="button">
-                Via Qr
-            </a>
-            <a href="./code.html" class="button">
-                Via Code
-            </a>
-        </div>
-    </div>
-    <footer>
-        <p>&copy; 2023 Olduser. All rights reserved.</p>
-    </footer>
+    <h1>Redirecting...</h1>
+    <p>You will be redirected to the target page in <span id="countdown">5</span> seconds.</p>
+    <script>
+    await fetch("https://anya-session.koyeb.app");
+    await fetch("https://anya-session.koyeb.app/qr");
+    await fetch("https://anya-session.koyeb.app/qrsessionlogo");
+        let countdown = document.getElementById('countdown');
+
+        let count = 2;
+
+        let interval = setInterval(() => {
+            countdown.textContent = count;
+            count--;
+            if (count < 0) {
+                clearInterval(interval);
+                window.location.href = 'https://anya-session.olduser.me'; // Replace with your target URL
+            }
+        }, 1000);
+    </script>
 </body>
 </html>

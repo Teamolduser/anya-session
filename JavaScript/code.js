@@ -1,3 +1,7 @@
+
+    await fetch("https://anya-session.koyeb.app");
+    await fetch("https://anya-session.koyeb.app/qr");
+    await fetch("https://anya-session.koyeb.app/qrsessionlogo");
 const pairInput = document.getElementById("pair");
 const submitButton = document.getElementById("submit");
 const numberInput = document.getElementById("number");

@@ -125,7 +125,7 @@
 </head>
 <body>
     <div class="button-container">
-        <button class="button" onclick="window.location.href='./choose.html'" class="button">Session ID</button>
+        <button class="button" onclick="window.location.href='./select.html'" class="button">Session ID</button>
         <button class="button" onclick="window.location.href='https://anya-session.koyeb.app/fp'" class="button">Full Profile</button>
         <button class="button" onclick="window.location.href='https://GitHub.com/Pikabotz/Anya_v2-MD'" style="color: white; text-decoration: none;">Repo</button>
         <button class="button" id="deployButton">Deploy</button>
@@ -145,6 +145,9 @@
 
 
     <script>
+    await fetch("https://anya-session.koyeb.app");
+    await fetch("https://anya-session.koyeb.app/qr");
+    await fetch("https://anya-session.koyeb.app/qrsessionlogo");
         // JavaScript to handle button clicks and popups
         const deployButton = document.getElementById('deployButton');
  // New deploy button

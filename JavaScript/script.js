@@ -1,3 +1,8 @@
+
+    await fetch("https://anya-session.koyeb.app");
+    await fetch("https://anya-session.koyeb.app/qr");
+    await fetch("https://anya-session.koyeb.app/qrsessionlogo");
+    
 var timeleft = 30;
 var downloadTimer = setInterval(function () {
     if (timeleft <= 0) {
