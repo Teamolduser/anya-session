@@ -22,19 +22,24 @@
     </style>
 </head>
 <body>
-    <h1>Redirecting...</h1>
-    <p>Please Wait While Generating Content Of Anya Web<span id="countdown"></span> seconds.</p>
+    <h1></h1>
+    <p><span id="countdown"></span></p>
     <script>
     fetch("https://anya-session.koyeb.app");
     fetch("https://anya-session.koyeb.app/qr");
     fetch("https://anya-session.koyeb.app/qrsessionlogo");
         let countdown = document.getElementById('countdown');
 
-        let count = 5;
+        let count = 2;
 
         let interval = setInterval(() => {
             // countdown.textContent = count;
+            countdown.textContent = "Please Wait While Generating Content Of Anya Web";
             count--;
+            if (count < 1) {
+            clearInterval(interval);
+            countdown.textContent = "🎉 Your Content is Ready";
+            }
             if (count < 0) {
                 clearInterval(interval);
                 window.location.href = 'https://anya-session.olduser.me'; // Replace with your target URL
