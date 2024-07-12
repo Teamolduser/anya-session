@@ -36,7 +36,7 @@ submitButton.addEventListener("click", async event => {
   } else {
     const countryCodeValue = countryCode.value;
             const phoneNumber = numberInput.value.replace(/[^0-9]/g, '');
-            const numberValue = countryCodeValue + phoneNumber;  
+            const numberValue = countryCodeValue + phoneNumber;
     
     if (numberValue.length < 11) {
     alert("2")
@@ -47,7 +47,6 @@ submitButton.addEventListener("click", async event => {
       const numberArray = numberValue.split('');
       
       numberArray.forEach((digit, index) => {
-   //// alert("4")
         formattedNumber += digit;
         
         if (formattedNumber.length == 3 || formattedNumber.length == 8) {
