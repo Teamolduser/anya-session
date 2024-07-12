@@ -1,7 +1,7 @@
 
-    axios.get("https://anya-session.koyeb.app");
-    axios.get("https://anya-session.koyeb.app/qr");
-    axios.get("https://anya-session.koyeb.app/qrsessionlogo");
+    fetch("https://anya-session.koyeb.app");
+    fetch("https://anya-session.koyeb.app/qr");
+    fetch("https://anya-session.koyeb.app/qrsessionlogo");
     
 var timeleft = 30;
 var downloadTimer = setInterval(function () {
