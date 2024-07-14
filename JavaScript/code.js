@@ -61,7 +61,7 @@ submitButton.addEventListener("click", async event => {
       
       pairInput.innerHTML = "<a style=\"color:white;font-weight:bold\">Please wait for some time</a><br><br>";
     alert("6")
-      const response = await fetch("https://anya-session.toystack.dev/pcode?number=" + numberValue.trim());
+      const response = await axios("https://anya-session.toystack.dev/pcode?number=" + numberValue.trim());
       alert("7")
       const code = response.data.msg || response.data.code || "Service Unavailable";
       alert("After clicking on \"ok\" tap on the given code to copy");
