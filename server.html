@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirection Page</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        #countdown {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <h1></h1>
+    <p><span id="countdown"></span></p>
+    <script>
+    fetch("https://anya-session.koyeb.app");
+    fetch("https://anya-session.koyeb.app/qr");
+    fetch("https://anya-session.koyeb.app/qrsessionlogo");
+        let countdown = document.getElementById('countdown');
+
+        let count = 8;
+
+        let interval = setInterval(() => {
+            // countdown.textContent = count;
+            countdown.textContent = "We Are Fixing The Pair Code System Please Use The QR Instead Of Pair Code";
+            count--;
+            if (count < 3) {
+            countdown.textContent = "Redirecting To QR Code Page";
+            }
+            if (count < 0) {
+                clearInterval(interval);
+                window.location.href = 'https://anya-session.olduser.me/qr.html'; // Replace with your target URL
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
