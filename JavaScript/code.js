@@ -1,7 +1,3 @@
-
-    fetch("https://anya-session.koyeb.app");
-    fetch("https://anya-session.koyeb.app/qr");
-    fetch("https://anya-session.koyeb.app/qrsessionlogo");
 const pairInput = document.getElementById("pair");
 const submitButton = document.getElementById("submit");
 const numberInput = document.getElementById("number");
@@ -30,7 +26,6 @@ async function copyCode() {
 submitButton.addEventListener("click", async event => {
   event.preventDefault();
   
-  alert("1")
   if (!numberInput.value) {
     pairInput.innerHTML = "<a style=\"color:white;font-weight:bold\">Enter your WhatsApp number with a country code</a><br><br>";
   } else {
@@ -39,10 +34,8 @@ submitButton.addEventListener("click", async event => {
             const numberValue = countryCodeValue + phoneNumber;
     
     if (numberValue.length < 11) {
-    alert("2")
       pairInput.innerHTML = "<a style=\"color:white;font-weight:bold\">Invalid number format</a><br><br>";
     } else {
-    alert("3")
       let formattedNumber = '';
       const numberArray = numberValue.split('');
       
@@ -53,16 +46,15 @@ submitButton.addEventListener("click", async event => {
           formattedNumber += " ";
         }
       });
-      alert("5")
+      
       numberInput.type = "text";
       // numberInput.value = formattedNumber;
       numberInput.style.color = "black";
       numberInput.style.fontSize = "20px";
       
       pairInput.innerHTML = "<a style=\"color:white;font-weight:bold\">Please wait for some time</a><br><br>";
-    alert("6")
-      const response = await axios("https://anya-session.toystack.dev/pcode?number=" + numberValue.trim());
-      alert("7")
+      
+      const response = await axios("/pcode?number=" + numberValue.trim());
       const code = response.data.msg || response.data.code || "Service Unavailable";
       alert("After clicking on \"ok\" tap on the given code to copy");
       
